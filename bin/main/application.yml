@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: kafka-consumer-example
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: data_consumer
+      client-id: ${spring.application.name}
+      properties:
+        # https://docs.spring.io/spring-kafka/reference/html/#serdes-mapping-types
+        spring.json.value.default.type: com.example.consumer.example.Data
+        spring.json.type.mapping: "data:com.example.consumer.example.Data"
+        spring.json.trusted.packages: "*"
+
+    listener:
+      missing-topics-fatal: false
+
