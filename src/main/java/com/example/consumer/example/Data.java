@@ -8,7 +8,8 @@ public class Data {
     public Data() {
 
     }
-    public Data(String value1, String value2) {
+    public Data(String key, String value1, String value2) {
+        this.key = key;
         this.value1 = value1;
         this.value2 = value2;
     }
